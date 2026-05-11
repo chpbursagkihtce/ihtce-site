@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>İnsan Hakları İhlali Bildirim Hattı</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
+
+<style>
+
+:root{
+  --red:#c62848;
+  --dark:#1f2937;
+  --muted:#6b7280;
+  --bg:#f8fafc;
+  --card:#ffffff;
+  --line:#e5e7eb;
+  --blueGlow:#dbeafe;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--dark);
+  overflow-x:hidden;
+  position:relative;
+}
+
+/* background glow */
+
+.bg-glow-red{
+  position:absolute;
+  width:500px;
+  height:500px;
+  background:rgba(198,40,72,0.10);
+  filter:blur(100px);
+  top:-150px;
+  left:-120px;
+  z-index:-1;
+}
+
+.bg-glow-blue{
+  position:absolute;
+  width:500px;
+  height:500px;
+  background:rgba(59,130,246,0.08);
+  filter:blur(120px);
+  bottom:-150px;
+  right:-120px;
+  z-index:-1;
+}
+
+.container{
+  width:100%;
+  max-width:1100px;
+  margin:auto;
+  padding:40px 24px;
+}
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.logo-row{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
+  margin-bottom:28px;
+  flex-wrap:wrap;
+}
+
+.logo-row img{
+  width:90px;
+  height:90px;
+  object-fit:cover;
+  border-radius:999px;
+  background:white;
+  padding:4px;
+  box-shadow:
+    0 10px 25px rgba(0,0,0,0.06);
+}
+
+.top-label{
+  font-size:0.8rem;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  font-weight:700;
+  color:var(--red);
+  margin-bottom:16px;
+}
+
+h1{
+  font-size:clamp(2.8rem,6vw,5.5rem);
+  line-height:1;
+  font-weight:800;
+  max-width:900px;
+  margin-bottom:26px;
+}
+
+.slogan{
+  font-size:clamp(1.1rem,2vw,1.5rem);
+  line-height:1.5;
+  font-weight:700;
+  color:var(--red);
+  margin-bottom:22px;
+}
+
+.description{
+  max-width:760px;
+  font-size:1.08rem;
+  line-height:1.9;
+  color:#4b5563;
+  margin-bottom:42px;
+}
+
+.cta-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  text-decoration:none;
+  background:var(--red);
+  color:white;
+  padding:18px 34px;
+  border-radius:18px;
+  font-weight:700;
+  transition:0.25s ease;
+  box-shadow:
+    0 12px 30px rgba(198,40,72,0.22);
+}
+
+.cta-button:hover{
+  transform:translateY(-4px);
+  box-shadow:
+    0 18px 40px rgba(198,40,72,0.28);
+}
+
+.info-grid{
+  width:100%;
+  margin-top:90px;
+
+  display:grid;
+  grid-template-columns:
+  repeat(auto-fit,minmax(240px,1fr));
+
+  gap:22px;
+}
+
+.info-card{
+  background:rgba(255,255,255,0.75);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.4);
+
+  padding:28px;
+  border-radius:24px;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.04);
+}
+
+.info-card h3{
+  margin-bottom:14px;
+  color:var(--red);
+  font-size:1.05rem;
+}
+
+.info-card p{
+  color:#4b5563;
+  line-height:1.8;
+}
+
+.footer{
+  margin-top:100px;
+  padding-top:26px;
+  border-top:1px solid var(--line);
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:24px;
+}
+
+.socials{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.socials a{
+  width:46px;
+  height:46px;
+
+  border-radius:999px;
+  background:white;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:#374151;
+  text-decoration:none;
+
+  border:1px solid #e5e5e5;
+
+  transition:0.22s ease;
+
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.04);
+}
+
+.socials a:hover{
+  transform:translateY(-4px);
+  color:var(--red);
+
+  box-shadow:
+    0 10px 20px rgba(0,0,0,0.08);
+}
+
+.footer-mail{
+  font-size:0.92rem;
+  color:#4b5563;
+}
+
+.footer-mail a{
+  color:var(--red);
+  text-decoration:none;
+  font-weight:600;
+}
+
+.footer-note{
+  max-width:700px;
+  text-align:center;
+  font-size:0.82rem;
+  color:#9ca3af;
+  line-height:1.7;
+}
+
+@media(max-width:768px){
+
+  .hero{
+    padding-top:40px;
+    padding-bottom:40px;
+  }
+
+  h1{
+    line-height:1.05;
+  }
+
+  .description{
+    font-size:1rem;
+  }
+
+  .logo-row img{
+    width:78px;
+    height:78px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg-glow-red"></div>
+<div class="bg-glow-blue"></div>
+
+<div class="container">
+
+<section class="hero">
+
+<div class="logo-row">
+
+<img
+src="logo1.png"
+alt="İnsan Hakları ve Toplumsal Cinsiyet Eşitliği Komisyonu"
+/>
+
+<img
+src="logo2.png"
+alt="Hukuk Komisyonu"
+/>
+
+</div>
+
+<div class="top-label">
+CHP Bursa Gençlik Kolları
+</div>
+
+<h1>
+İnsan Hakları İhlali<br>
+Bildirim Hattı
+</h1>
+
+<div class="slogan">
+Hakkın İçin Omuz Omuza,<br>
+Gelecek İçin Yan Yana!
+</div>
+
+<p class="description">
+Hak ihlallerinin, mağduriyetlerin ve eşitsizliğin önüne gençliğin ve adaletin barikatını örüyoruz.
+Uzattığımız eli tut, barikata güç ver.
+</p>
+
+<a
+class="cta-button"
+href="https://docs.google.com/forms/d/e/1FAIpQLSesb6FjDDPgmzTzB7mCBDA2ZciBBod7bSIprNqlMIKKJVaC9g/viewform?usp=dialog"
+target="_blank"
+>
+<i class="fa-solid fa-arrow-up-right-from-square"></i>
+İhlal Bildiriminde Bulun
+</a>
+
+<div class="info-grid">
+
+<div class="info-card">
+<h3>Gizlilik</h3>
+<p>
+Paylaşılan bilgiler yalnızca ilgili komisyon üyeleri tarafından değerlendirilir.
+</p>
+</div>
+
+<div class="info-card">
+<h3>Dayanışma</h3>
+<p>
+Hak ihlallerine karşı birlikte mücadele ediyor, dayanışmayı büyütüyoruz.
+</p>
+</div>
+
+<div class="info-card">
+<h3>Hukuki Yönlendirme</h3>
+<p>
+Hukuk okuryazarlığı kazandırılması ve ihtiyaç halinde hukuki destek ile yönlendirme yapılması hedeflenmektedir.
+</p>
+</div>
+
+</div>
+
+<footer class="footer">
+
+<div class="socials">
+
+<a
+href="https://www.instagram.com/chpbursainsanhaklari/"
+target="_blank"
+title="İnsan Hakları ve Toplumsal Cinsiyet Eşitliği Komisyonu">
+<i class="fa-brands fa-instagram"></i>
+</a>
+
+<a
+href="https://www.instagram.com/chpgenchukukbursa/"
+target="_blank"
+title="Hukuk Komisyonu">
+<i class="fa-brands fa-instagram"></i>
+</a>
+
+<a
+href="https://www.instagram.com/chpgenclikbursa/"
+target="_blank"
+title="CHP Bursa Gençlik Kolları">
+<i class="fa-brands fa-instagram"></i>
+</a>
+
+<a
+href="https://x.com/CHPGenclikBursa"
+target="_blank"
+title="CHP Bursa Gençlik Kolları X Hesabı">
+<i class="fa-brands fa-x-twitter"></i>
+</a>
+
+</div>
+
+<div class="footer-mail">
+Belge ve ek dosya iletimi:<br>
+<a href="mailto:chpbursagkihtce@gmail.com">
+chpbursagkihtce@gmail.com
+</a>
+</div>
+
+<div class="footer-note">
+Bu hat, İnsan Hakları ve Toplumsal Cinsiyet Eşitliği Komisyonu ile Hukuk Komisyonu inisiyatifiyle yürütülmektedir.
+</div>
+
+</footer>
+
+</section>
+
+</div>
+
+</body>
+</html>
